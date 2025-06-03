@@ -13,31 +13,45 @@ class DFA:
         if self.state == 'start':
             if char.isalnum() or char in ['.', '_']:
                 self.state = 'username'
-                
+            else:
+                self.state = 'invalid'
+                    
         elif self.state == 'username':
             if char.isalnum() or char in ['.', '_']:
                 self.state = 'username'
             elif char == '@':
                 self.state = 'at'
-                
+            else:
+                self.state = 'invalid'
+                    
         elif self.state == 'at':
             if char.isalnum():
                 self.state = 'domain'
-                
+            else:
+                self.state = 'invalid'
+                    
         elif self.state == 'domain':
             if char.isalnum():
                 self.state = 'domain'
             elif char == '.':
                 self.state = 'dot'
-                
+            else:
+                self.state = 'invalid'
+                    
         elif self.state == 'dot':
             if char.isalnum():
                 self.state = 'extension'
+            else:
+                self.state = 'invalid'
                 
         elif self.state == 'extension':
             if char.isalnum():
                 self.state = 'extension'
-        
+            else:
+                self.state = 'invalid'
+                
+        else:
+            self.state = 'invalid'
     
     def is_valid(self, email):
         self.reset()
