@@ -17,16 +17,10 @@ class DFA:
                 self.state = 'invalid'
                     
         elif self.state == 'username':
-            if char.isalnum():
+            if char.isalnum() or char in ['.', '_']:
                 self.state = 'username'
             elif char == '@':
                 self.state = 'at'
-            else:
-                self.state = 'invalid'
-                
-        elif self.state == 'username2':
-            if char in ['.', '_']:
-                self.state = 'username'
             else:
                 self.state = 'invalid'
                     
