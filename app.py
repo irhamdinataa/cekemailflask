@@ -11,16 +11,22 @@ class DFA:
     
     def transition(self, char):
         if self.state == 'start':
-            if char.isalnum() or char in ['.', '_']:
+            if char.isalnum():
                 self.state = 'username'
             else:
                 self.state = 'invalid'
                     
         elif self.state == 'username':
-            if char.isalnum() or char in ['.', '_']:
+            if char.isalnum():
                 self.state = 'username'
             elif char == '@':
                 self.state = 'at'
+            else:
+                self.state = 'invalid'
+                
+        elif self.state == 'username2':
+            if char in ['.', '_']:
+                self.state = 'username'
             else:
                 self.state = 'invalid'
                     
