@@ -45,7 +45,7 @@ class DFA:
                 self.state = 'invalid'
                 
         elif self.state == 'extension':
-            if char.isalnum():
+            if char.isalnum() or char in ['.']:
                 self.state = 'extension'
             else:
                 self.state = 'invalid'
