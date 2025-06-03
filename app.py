@@ -62,16 +62,13 @@ class DFA:
         return self.state == 'extension'
 
 
-# Fungsi untuk mengecek apakah email valid
 def check_email_validity(email):
     dfa = DFA()
     return dfa.is_valid(email)
 
 
-# Inisialisasi Flask
 app = Flask(__name__)
 
-# Halaman utama
 @app.route("/", methods=["GET", "POST"])
 def index():
     email = None
@@ -84,6 +81,5 @@ def index():
     return render_template("index.html", email=email, is_valid=is_valid)
 
 
-# Menjalankan aplikasi Flask
 if __name__ == "__main__":
     app.run(debug=True)
